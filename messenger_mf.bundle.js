@@ -512,8 +512,8 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 			"webpack/sharing/consume/default/@mui/material/@mui/material": () => (loadStrictVersionCheckFallback("default", "@mui/material", [1,5,12,0], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_material_Alert_Alert_js-node_modules_mui_material_AlertTitle_AlertTi-fa4b4c"), __webpack_require__.e("vendors-node_modules_mui_material_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom")]).then(() => (() => (__webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@mui/icons-material/@mui/icons-material": () => (loadStrictVersionCheckFallback("default", "@mui/icons-material", [1,5,11,16], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_icons-material_esm_index_js")]).then(() => (() => (__webpack_require__(/*! @mui/icons-material */ "./node_modules/@mui/icons-material/esm/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@mui/lab/@mui/lab": () => (loadStrictVersionCheckFallback("default", "@mui/lab", [1,5,0,0,,"alpha",127], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_material_Alert_Alert_js-node_modules_mui_material_AlertTitle_AlertTi-fa4b4c"), __webpack_require__.e("vendors-node_modules_mui_lab_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom")]).then(() => (() => (__webpack_require__(/*! @mui/lab */ "./node_modules/@mui/lab/index.js"))))))),
-/******/ 			"webpack/sharing/consume/default/react-timeago/react-timeago": () => (loadStrictVersionCheckFallback("default", "react-timeago", [1,7,2,0], () => (__webpack_require__.e("node_modules_react-timeago_es6_index_js-_a2751").then(() => (() => (__webpack_require__(/*! react-timeago */ "./node_modules/react-timeago/es6/index.js"))))))),
-/******/ 			"webpack/sharing/consume/default/axios/axios": () => (loadStrictVersionCheckFallback("default", "axios", [1,1,3,5], () => (__webpack_require__.e("vendors-node_modules_axios_index_js").then(() => (() => (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")))))))
+/******/ 			"webpack/sharing/consume/default/axios/axios": () => (loadStrictVersionCheckFallback("default", "axios", [1,1,3,5], () => (__webpack_require__.e("vendors-node_modules_axios_index_js").then(() => (() => (__webpack_require__(/*! axios */ "./node_modules/axios/index.js"))))))),
+/******/ 			"webpack/sharing/consume/default/react-timeago/react-timeago": () => (loadStrictVersionCheckFallback("default", "react-timeago", [1,7,2,0], () => (__webpack_require__.e("node_modules_react-timeago_es6_index_js-_a2751").then(() => (() => (__webpack_require__(/*! react-timeago */ "./node_modules/react-timeago/es6/index.js")))))))
 /******/ 		};
 /******/ 		// no consumes in initial chunks
 /******/ 		var chunkMapping = {
@@ -533,8 +533,8 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 				"webpack/sharing/consume/default/@mui/material/@mui/material",
 /******/ 				"webpack/sharing/consume/default/@mui/icons-material/@mui/icons-material",
 /******/ 				"webpack/sharing/consume/default/@mui/lab/@mui/lab",
-/******/ 				"webpack/sharing/consume/default/react-timeago/react-timeago",
-/******/ 				"webpack/sharing/consume/default/axios/axios"
+/******/ 				"webpack/sharing/consume/default/axios/axios",
+/******/ 				"webpack/sharing/consume/default/react-timeago/react-timeago"
 /******/ 			]
 /******/ 		};
 /******/ 		__webpack_require__.f.consumes = (chunkId, promises) => {
