@@ -6,7 +6,7 @@ const deps = require('./package.json').dependencies;
 
 const sharedlibRemoteLoc = process.env.NODE_ENV === 'production' ?
   'https://kshitijraj09.github.io/sharedlib' :
-  'http://localhost:5003'
+  'http://localhost:5003';
 
 module.exports = {
   entry: {
