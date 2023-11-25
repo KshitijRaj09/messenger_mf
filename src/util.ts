@@ -62,28 +62,6 @@ export const sendNotification = (message: string, userInfo: { avatar: string, us
   }
 }
 
-export const checkNotificationStatus = (message: string, userInfo: { avatar: string, username: string }) => {
-  if (!getUserInfoFromStorage()) {
-    return;
-  }
-  if (!("Notification" in window)) {
-    alert("This browser does not support system notifications!")
-  }
-  else if (Notification.permission === "granted") {
-    sendNotification(message, userInfo)
-  }
-  else if (Notification.permission === "default") {
-    Notification.requestPermission((permission) => {
-      if (permission === "granted") {
-        sendNotification(message, userInfo);
-      }
-    });
-  }
-  else {
-    alert("Notifications blocked. Please enable it in your browser.");
-  }
-}
-
 // const debounce = <Type,>(callback: Type) => {
 
 // }

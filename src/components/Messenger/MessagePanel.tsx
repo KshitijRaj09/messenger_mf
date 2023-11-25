@@ -7,7 +7,7 @@ import { LoadingButton } from '@mui/lab';
 import { Send as SendIcon } from "@mui/icons-material";
 import { sendMessageAPI } from '../../apis/sendMessage';
 import { chatInfoContext } from './ContextAPI/ChatInfoProvider';
-import { checkNotificationStatus } from '../../util';
+import { sendNotification } from '../../util';
 
 const StyledLoadingButton = styled(LoadingButton)(() => ({
    backgroundColor: "#E5D1FA",
@@ -47,7 +47,7 @@ const MessagePanel = () => {
    useEffect(() => {
       socket.emit('one-one-chat', chatId);
       socket.on("message-from-server", (newMessageFromServer:MessagesDataType) => {
-         checkNotificationStatus(newMessageFromServer.content, { username: secondUserName, avatar: '' });
+         sendNotification(newMessageFromServer.content, { username: secondUserName, avatar: '' });
          setMessages([...messagesRef.current, newMessageFromServer]);
       });
       socket.on("start-typing-from-server", () => {
