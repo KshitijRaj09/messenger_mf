@@ -21,8 +21,4 @@ export declare const sendNotification: (message: string, userInfo: {
     avatar: string;
     username: string;
 }) => void;
-export declare const checkNotificationStatus: (message: string, userInfo: {
-    avatar: string;
-    username: string;
-}) => void;
 export {};
