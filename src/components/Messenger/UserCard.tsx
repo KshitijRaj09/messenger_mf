@@ -7,9 +7,11 @@ import {
    Skeleton,
    Typography,
 } from "@mui/material";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { getChatInfo } from "../../apis/getChatInfo";
 import { chatInfoContext } from "./ContextAPI/ChatInfoProvider";
+import useNotificationProvider from "./CustomHooks/useNotificationProvider";
+import { NotificationType, WindowEvents } from "@kshitijraj09/sharedlib_mf";
 
 const styles = () => ({
    styleCard: {
@@ -46,13 +48,19 @@ type UserCardPropsType = {
 const UserCard = ({ secondUserInfo, isLoading, chatId = '', chatName = '', from }: UserCardPropsType) => {
    const classes = styles();
    const { setChatInfo } = useContext(chatInfoContext);
+   const messageNotification = 'messageNotification' as WindowEvents.messageNotification;
+   const { outputStack: notificationStack } = useNotificationProvider<NotificationType>(messageNotification);
+   
+   let memoizedNotificationCount = useMemo(() => notificationStack.filter(notification =>
+      notification.senderId === secondUserInfo.userId),
+      [notificationStack]
+   )
 
    const chatInfoAPIHandler = async () => {
       if (isLoading) {
          return;
       }
       const chatDetails = await getChatInfo(secondUserInfo.userId);
-
       setChatInfoHandler(chatDetails?.chatId);
    }
 
@@ -90,7 +98,7 @@ const UserCard = ({ secondUserInfo, isLoading, chatId = '', chatName = '', from 
                ) : (
                   <Box component='div' sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                      <Typography fontFamily='Mooli, sans-serif'>{secondUserInfo.name}</Typography>
-                     <Badge badgeContent={2} invisible={false} color="primary" />
+                     <Badge badgeContent={memoizedNotificationCount.length} invisible={false} color="primary" />
                   </Box>
                )
             }

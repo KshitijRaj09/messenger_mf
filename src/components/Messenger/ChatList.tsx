@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { getUserChats } from "../../apis/getUserChats";
 import UserCard from "./UserCard";
 import { Box, Typography } from "@mui/material";
@@ -52,5 +52,5 @@ const ChatList = () => {
 // return (
 //    <>{isLoading && !chatList.length ? <ChatListSkeleton /> : chatList.map(chat =>)}</>
 // )
-
-export default ChatList;
+const memoizedChatList = memo(ChatList);
+export default memoizedChatList;
