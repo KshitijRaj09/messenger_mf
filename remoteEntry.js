@@ -19,6 +19,29 @@ var messengerMFE;
 
 eval("var moduleMap = {\n\t\"./Messenger\": () => {\n\t\treturn Promise.all([__webpack_require__.e(\"vendors-node_modules_emotion_cache_dist_emotion-cache_browser_esm_js\"), __webpack_require__.e(\"vendors-node_modules_emotion_memoize_dist_emotion-memoize_esm_js-node_modules_mui_material_st-e09310\"), __webpack_require__.e(\"webpack_sharing_consume_default_react_react\"), __webpack_require__.e(\"webpack_sharing_consume_default_emotion_react_emotion_react\"), __webpack_require__.e(\"webpack_sharing_consume_default_emotion_styled_emotion_styled\"), __webpack_require__.e(\"src_components_Messenger_Messenger_tsx\"), __webpack_require__.e(\"node_modules_mui_system_esm_Box_Box_js\")]).then(() => (() => ((__webpack_require__(/*! ./src/components/Messenger/Messenger */ \"./src/components/Messenger/Messenger.tsx\")))));\n\t}\n};\nvar get = (module, getScope) => {\n\t__webpack_require__.R = getScope;\n\tgetScope = (\n\t\t__webpack_require__.o(moduleMap, module)\n\t\t\t? moduleMap[module]()\n\t\t\t: Promise.resolve().then(() => {\n\t\t\t\tthrow new Error('Module \"' + module + '\" does not exist in container.');\n\t\t\t})\n\t);\n\t__webpack_require__.R = undefined;\n\treturn getScope;\n};\nvar init = (shareScope, initScope) => {\n\tif (!__webpack_require__.S) return;\n\tvar name = \"default\"\n\tvar oldScope = __webpack_require__.S[name];\n\tif(oldScope && oldScope !== shareScope) throw new Error(\"Container initialization failed as it has already been initialized with a different share scope\");\n\t__webpack_require__.S[name] = shareScope;\n\treturn __webpack_require__.I(name, initScope);\n};\n\n// This exports getters to disallow modifications\n__webpack_require__.d(exports, {\n\tget: () => (get),\n\tinit: () => (init)\n});\n\n//# sourceURL=webpack://messenger_mf/container_entry?");
 
+/***/ }),
+
+/***/ "webpack/container/reference/Sharedlib":
+/*!***************************************************************************************!*\
+  !*** external "sharedlibMFE@https://kshitijraj09.github.io/sharedlib/remoteEntry.js" ***!
+  \***************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var __webpack_error__ = new Error();
+module.exports = new Promise((resolve, reject) => {
+	if(typeof sharedlibMFE !== "undefined") return resolve();
+	__webpack_require__.l("https://kshitijraj09.github.io/sharedlib/remoteEntry.js", (event) => {
+		if(typeof sharedlibMFE !== "undefined") return resolve();
+		var errorType = event && (event.type === 'load' ? 'missing' : event.type);
+		var realSrc = event && event.target && event.target.src;
+		__webpack_error__.message = 'Loading script failed.\n(' + errorType + ': ' + realSrc + ')';
+		__webpack_error__.name = 'ScriptExternalLoadError';
+		__webpack_error__.type = errorType;
+		__webpack_error__.request = realSrc;
+		reject(__webpack_error__);
+	}, "sharedlibMFE");
+}).then(() => (sharedlibMFE));
+
 /***/ })
 
 /******/ 	});
@@ -63,6 +86,36 @@ eval("var moduleMap = {\n\t\"./Messenger\": () => {\n\t\treturn Promise.all([__w
 /******/ 				() => (module);
 /******/ 			__webpack_require__.d(getter, { a: getter });
 /******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/create fake namespace object */
+/******/ 	(() => {
+/******/ 		var getProto = Object.getPrototypeOf ? (obj) => (Object.getPrototypeOf(obj)) : (obj) => (obj.__proto__);
+/******/ 		var leafPrototypes;
+/******/ 		// create a fake namespace object
+/******/ 		// mode & 1: value is a module id, require it
+/******/ 		// mode & 2: merge all properties of value into the ns
+/******/ 		// mode & 4: return value when already ns object
+/******/ 		// mode & 16: return value when it's Promise-like
+/******/ 		// mode & 8|1: behave like require
+/******/ 		__webpack_require__.t = function(value, mode) {
+/******/ 			if(mode & 1) value = this(value);
+/******/ 			if(mode & 8) return value;
+/******/ 			if(typeof value === 'object' && value) {
+/******/ 				if((mode & 4) && value.__esModule) return value;
+/******/ 				if((mode & 16) && typeof value.then === 'function') return value;
+/******/ 			}
+/******/ 			var ns = Object.create(null);
+/******/ 			__webpack_require__.r(ns);
+/******/ 			var def = {};
+/******/ 			leafPrototypes = leafPrototypes || [null, getProto({}), getProto([]), getProto(getProto)];
+/******/ 			for(var current = mode & 2 && value; typeof current == 'object' && !~leafPrototypes.indexOf(current); current = getProto(current)) {
+/******/ 				Object.getOwnPropertyNames(current).forEach((key) => (def[key] = () => (value[key])));
+/******/ 			}
+/******/ 			def['default'] = () => (value);
+/******/ 			__webpack_require__.d(ns, def);
+/******/ 			return ns;
 /******/ 		};
 /******/ 	})();
 /******/ 	
@@ -176,8 +229,18 @@ eval("var moduleMap = {\n\t\"./Messenger\": () => {\n\t\treturn Promise.all([__w
 /******/ 	
 /******/ 	/* webpack/runtime/remotes loading */
 /******/ 	(() => {
-/******/ 		var chunkMapping = {};
-/******/ 		var idToExternalAndNameMapping = {};
+/******/ 		var chunkMapping = {
+/******/ 			"src_components_Messenger_Messenger_tsx": [
+/******/ 				"webpack/container/remote/Sharedlib/eventservice"
+/******/ 			]
+/******/ 		};
+/******/ 		var idToExternalAndNameMapping = {
+/******/ 			"webpack/container/remote/Sharedlib/eventservice": [
+/******/ 				"default",
+/******/ 				"./eventservice",
+/******/ 				"webpack/container/reference/Sharedlib"
+/******/ 			]
+/******/ 		};
 /******/ 		__webpack_require__.f.remotes = (chunkId, promises) => {
 /******/ 			if(__webpack_require__.o(chunkMapping, chunkId)) {
 /******/ 				chunkMapping[chunkId].forEach((id) => {
@@ -273,6 +336,7 @@ eval("var moduleMap = {\n\t\"./Messenger\": () => {\n\t\treturn Promise.all([__w
 /******/ 					register("react-dom", "18.2.0", () => (Promise.all([__webpack_require__.e("vendors-node_modules_react-dom_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react_react")]).then(() => (() => (__webpack_require__(/*! ./node_modules/react-dom/index.js */ "./node_modules/react-dom/index.js"))))));
 /******/ 					register("react-timeago", "7.2.0", () => (Promise.all([__webpack_require__.e("webpack_sharing_consume_default_react_react"), __webpack_require__.e("node_modules_react-timeago_es6_index_js-_a2750")]).then(() => (() => (__webpack_require__(/*! ./node_modules/react-timeago/es6/index.js */ "./node_modules/react-timeago/es6/index.js"))))));
 /******/ 					register("react", "18.2.0", () => (__webpack_require__.e("node_modules_react_index_js").then(() => (() => (__webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js"))))));
+/******/ 					initExternal("webpack/container/reference/Sharedlib");
 /******/ 				}
 /******/ 				break;
 /******/ 			}
@@ -449,8 +513,8 @@ eval("var moduleMap = {\n\t\"./Messenger\": () => {\n\t\treturn Promise.all([__w
 /******/ 			"webpack/sharing/consume/default/@mui/material/@mui/material": () => (loadStrictVersionCheckFallback("default", "@mui/material", [1,5,12,0], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_material_Alert_Alert_js-node_modules_mui_material_AlertTitle_AlertTi-fa4b4c"), __webpack_require__.e("vendors-node_modules_mui_material_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom")]).then(() => (() => (__webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@mui/icons-material/@mui/icons-material": () => (loadStrictVersionCheckFallback("default", "@mui/icons-material", [1,5,11,16], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_icons-material_esm_index_js")]).then(() => (() => (__webpack_require__(/*! @mui/icons-material */ "./node_modules/@mui/icons-material/esm/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@mui/lab/@mui/lab": () => (loadStrictVersionCheckFallback("default", "@mui/lab", [1,5,0,0,,"alpha",127], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_material_Alert_Alert_js-node_modules_mui_material_AlertTitle_AlertTi-fa4b4c"), __webpack_require__.e("vendors-node_modules_mui_lab_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom")]).then(() => (() => (__webpack_require__(/*! @mui/lab */ "./node_modules/@mui/lab/index.js"))))))),
-/******/ 			"webpack/sharing/consume/default/react-timeago/react-timeago": () => (loadStrictVersionCheckFallback("default", "react-timeago", [1,7,2,0], () => (__webpack_require__.e("node_modules_react-timeago_es6_index_js-_a2751").then(() => (() => (__webpack_require__(/*! react-timeago */ "./node_modules/react-timeago/es6/index.js"))))))),
-/******/ 			"webpack/sharing/consume/default/axios/axios": () => (loadStrictVersionCheckFallback("default", "axios", [1,1,3,5], () => (__webpack_require__.e("vendors-node_modules_axios_index_js").then(() => (() => (__webpack_require__(/*! axios */ "./node_modules/axios/index.js")))))))
+/******/ 			"webpack/sharing/consume/default/axios/axios": () => (loadStrictVersionCheckFallback("default", "axios", [1,1,3,5], () => (__webpack_require__.e("vendors-node_modules_axios_index_js").then(() => (() => (__webpack_require__(/*! axios */ "./node_modules/axios/index.js"))))))),
+/******/ 			"webpack/sharing/consume/default/react-timeago/react-timeago": () => (loadStrictVersionCheckFallback("default", "react-timeago", [1,7,2,0], () => (__webpack_require__.e("node_modules_react-timeago_es6_index_js-_a2751").then(() => (() => (__webpack_require__(/*! react-timeago */ "./node_modules/react-timeago/es6/index.js")))))))
 /******/ 		};
 /******/ 		// no consumes in initial chunks
 /******/ 		var chunkMapping = {
@@ -470,8 +534,8 @@ eval("var moduleMap = {\n\t\"./Messenger\": () => {\n\t\treturn Promise.all([__w
 /******/ 				"webpack/sharing/consume/default/@mui/material/@mui/material",
 /******/ 				"webpack/sharing/consume/default/@mui/icons-material/@mui/icons-material",
 /******/ 				"webpack/sharing/consume/default/@mui/lab/@mui/lab",
-/******/ 				"webpack/sharing/consume/default/react-timeago/react-timeago",
-/******/ 				"webpack/sharing/consume/default/axios/axios"
+/******/ 				"webpack/sharing/consume/default/axios/axios",
+/******/ 				"webpack/sharing/consume/default/react-timeago/react-timeago"
 /******/ 			]
 /******/ 		};
 /******/ 		__webpack_require__.f.consumes = (chunkId, promises) => {

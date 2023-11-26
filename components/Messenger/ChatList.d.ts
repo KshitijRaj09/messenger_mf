@@ -1,3 +1,3 @@
 import React from "react";
-declare const ChatList: () => React.JSX.Element;
-export default ChatList;
+declare const memoizedChatList: React.MemoExoticComponent<() => React.JSX.Element>;
+export default memoizedChatList;
