@@ -336,6 +336,7 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 					register("react-dom", "18.2.0", () => (Promise.all([__webpack_require__.e("vendors-node_modules_react-dom_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react_react")]).then(() => (() => (__webpack_require__(/*! ./node_modules/react-dom/index.js */ "./node_modules/react-dom/index.js"))))));
 /******/ 					register("react-timeago", "7.2.0", () => (Promise.all([__webpack_require__.e("webpack_sharing_consume_default_react_react"), __webpack_require__.e("node_modules_react-timeago_es6_index_js-_a2750")]).then(() => (() => (__webpack_require__(/*! ./node_modules/react-timeago/es6/index.js */ "./node_modules/react-timeago/es6/index.js"))))));
 /******/ 					register("react", "18.2.0", () => (__webpack_require__.e("node_modules_react_index_js").then(() => (() => (__webpack_require__(/*! ./node_modules/react/index.js */ "./node_modules/react/index.js"))))));
+/******/ 					register("zustand", "4.4.7", () => (Promise.all([__webpack_require__.e("webpack_sharing_consume_default_react_react"), __webpack_require__.e("node_modules_zustand_esm_index_mjs-_54da0")]).then(() => (() => (__webpack_require__(/*! ./node_modules/zustand/esm/index.mjs */ "./node_modules/zustand/esm/index.mjs"))))));
 /******/ 					initExternal("webpack/container/reference/Sharedlib");
 /******/ 				}
 /******/ 				break;
@@ -513,6 +514,7 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 			"webpack/sharing/consume/default/@mui/material/@mui/material": () => (loadStrictVersionCheckFallback("default", "@mui/material", [1,5,12,0], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_material_Alert_Alert_js-node_modules_mui_material_AlertTitle_AlertTi-fa4b4c"), __webpack_require__.e("vendors-node_modules_mui_material_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom")]).then(() => (() => (__webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@mui/icons-material/@mui/icons-material": () => (loadStrictVersionCheckFallback("default", "@mui/icons-material", [1,5,11,16], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_icons-material_esm_index_js")]).then(() => (() => (__webpack_require__(/*! @mui/icons-material */ "./node_modules/@mui/icons-material/esm/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/@mui/lab/@mui/lab": () => (loadStrictVersionCheckFallback("default", "@mui/lab", [1,5,0,0,,"alpha",127], () => (Promise.all([__webpack_require__.e("vendors-node_modules_mui_material_utils_createSvgIcon_js"), __webpack_require__.e("vendors-node_modules_mui_material_Alert_Alert_js-node_modules_mui_material_AlertTitle_AlertTi-fa4b4c"), __webpack_require__.e("vendors-node_modules_mui_lab_index_js"), __webpack_require__.e("webpack_sharing_consume_default_react-dom_react-dom")]).then(() => (() => (__webpack_require__(/*! @mui/lab */ "./node_modules/@mui/lab/index.js"))))))),
+/******/ 			"webpack/sharing/consume/default/zustand/zustand": () => (loadStrictVersionCheckFallback("default", "zustand", [1,4,4,7], () => (__webpack_require__.e("node_modules_zustand_esm_index_mjs-_54da1").then(() => (() => (__webpack_require__(/*! zustand */ "./node_modules/zustand/esm/index.mjs"))))))),
 /******/ 			"webpack/sharing/consume/default/axios/axios": () => (loadStrictVersionCheckFallback("default", "axios", [1,1,3,5], () => (__webpack_require__.e("vendors-node_modules_axios_index_js").then(() => (() => (__webpack_require__(/*! axios */ "./node_modules/axios/index.js"))))))),
 /******/ 			"webpack/sharing/consume/default/react-timeago/react-timeago": () => (loadStrictVersionCheckFallback("default", "react-timeago", [1,7,2,0], () => (__webpack_require__.e("node_modules_react-timeago_es6_index_js-_a2751").then(() => (() => (__webpack_require__(/*! react-timeago */ "./node_modules/react-timeago/es6/index.js")))))))
 /******/ 		};
@@ -534,6 +536,7 @@ module.exports = new Promise((resolve, reject) => {
 /******/ 				"webpack/sharing/consume/default/@mui/material/@mui/material",
 /******/ 				"webpack/sharing/consume/default/@mui/icons-material/@mui/icons-material",
 /******/ 				"webpack/sharing/consume/default/@mui/lab/@mui/lab",
+/******/ 				"webpack/sharing/consume/default/zustand/zustand",
 /******/ 				"webpack/sharing/consume/default/axios/axios",
 /******/ 				"webpack/sharing/consume/default/react-timeago/react-timeago"
 /******/ 			]

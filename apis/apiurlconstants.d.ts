@@ -6,3 +6,4 @@ export declare const getUserAllChats = "/chat/getUserChats";
 export declare const followingUserListAPIUrl = "/follow/getFollowingsList";
 export declare const fetchChatInfo = "/chat/find";
 export declare const getUserBySearchAPIUrl = "/user/getUserBySearch";
+export declare const notificationApiRoute = "/notification";

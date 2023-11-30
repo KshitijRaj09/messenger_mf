@@ -21,4 +21,6 @@ export declare const sendNotification: (message: string, userInfo: {
     avatar: string;
     username: string;
 }) => void;
+export declare const handleVisibilityChange: (secondUserId: string) => void;
+export declare const updateNotificationHandler: () => void;
 export {};
