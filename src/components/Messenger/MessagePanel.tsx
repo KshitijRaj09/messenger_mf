@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { fetchMessagesAPI } from '../../apis/fetchMessages';
-import { useFetchData } from './CustomHooks/usefetchData';
+import { useFetchData } from '../../CustomHooks/usefetchData';
 import Message from './Message';
 import { Box, Grid, InputLabel, TextField, Typography, styled, useMediaQuery, useTheme } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 import { Send as SendIcon } from "@mui/icons-material";
 import { sendMessageAPI } from '../../apis/sendMessage';
-import { chatInfoContext } from './ContextAPI/ChatInfoProvider';
+import { chatInfoContext } from '../../ContextAPI/ChatInfoProvider';
 import { sendNotification } from '../../util';
+import { pushNotifiationApi } from '../../apis/pushNotificationApi';;
+import useNotificationStore from '../../zustand-config/notificationStore';
 
 const StyledLoadingButton = styled(LoadingButton)(() => ({
    backgroundColor: "#E5D1FA",
@@ -34,7 +36,7 @@ const MessagePanel = () => {
       chatId,
       []
    );
-
+   const { decreaseNotifications } = useNotificationStore();
    const [isSecondUserTyping, setIsSecondUserTyping] = useState(false);
    const [isInProgress, setIsInprogress] = useState(false);
    const [input, setInput] = useState('');
@@ -56,6 +58,7 @@ const MessagePanel = () => {
       socket.on("stop-typing-from-server", () => {
          setIsSecondUserTyping(false);
       });
+      decreaseNotifications(receiverId);
 
       return () => {
          socket.off("message-from-server");
@@ -66,8 +69,24 @@ const MessagePanel = () => {
 
    useEffect(() => {
       lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
-   }, [messages])
+      if (document.visibilityState === 'visible') {
+         decreaseNotifications(receiverId);
+      }
+   }, [messages]);
 
+   useEffect(() => {
+      window.addEventListener('visibilitychange', handleVisibilityChange);
+      return () => {
+        window.removeEventListener('visibilitychange', handleVisibilityChange);
+      };
+    }, [receiverId]);
+
+   const handleVisibilityChange = () => {
+         if (document.visibilityState === 'visible') {
+            decreaseNotifications(receiverId);
+         }
+   }
+   
    const onChangeHandler = (value: string) => {
       socket.emit("start-typing-from-client");
       setInput(value);
@@ -93,6 +112,11 @@ const MessagePanel = () => {
             createdAt: new Date().toJSON(),
             _id: new Date().toJSON()
          };
+         const { _id, ...rest } = newMessage;
+         const response = await pushNotifiationApi({
+            ...rest, type: 'message',
+            isRead: false
+         })
          socket.emit('send-message', (newMessage));
          setIsInprogress(false);
          setMessages((messages) => ([...messages, newMessage]));

@@ -1,3 +1,6 @@
+import { WindowEvents } from "@kshitijraj09/sharedlib_mf";
+import useNotificationStore from "./zustand-config/notificationStore";
+
 type UserInfoType = {
   username: string;
   name: string;
@@ -60,6 +63,24 @@ export const sendNotification = (message: string, userInfo: { avatar: string, us
       window.open(`${location.origin}/messenger`)
     }
   }
+}
+const decreaseNotifications = useNotificationStore.getState().decreaseNotifications;
+
+export const handleVisibilityChange = (secondUserId: string) => {
+      if (document.visibilityState === 'visible') {
+         decreaseNotifications(secondUserId);
+      }
+}
+
+export const updateNotificationHandler = () => {
+  const notifications = useNotificationStore.getState().notifications;
+  const eventName: WindowEvents = 'updateNotification';
+  import("Sharedlib/eventservice").
+  then((event) => {
+    event.default.fire(eventName, { detail: notifications }); 
+  }).catch(error => {
+     console.error('Error occured in event', error);
+  })
 }
 
 // const debounce = <Type,>(callback: Type) => {

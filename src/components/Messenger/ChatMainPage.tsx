@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import React, { useContext } from 'react';
-import { chatInfoContext } from './ContextAPI/ChatInfoProvider';
+import { chatInfoContext } from '../../ContextAPI/ChatInfoProvider';
 import MessagePanel from './MessagePanel';
 
 const ChatMainPage = () => {

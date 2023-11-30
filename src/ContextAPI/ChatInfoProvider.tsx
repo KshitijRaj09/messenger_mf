@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { getUserInfoFromStorage } from '../../../util';
+import { getUserInfoFromStorage } from '../util';
 
 
 export type chatInfoStateType = {

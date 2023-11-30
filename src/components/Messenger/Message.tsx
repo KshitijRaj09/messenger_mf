@@ -2,7 +2,7 @@ import React, { memo, useContext } from "react";
 import { Avatar, Box, Paper, Typography } from "@mui/material";
 import { MessagesDataType } from "./MessagePanel";
 import TimeAgo from 'react-timeago';
-import { chatInfoContext } from "./ContextAPI/ChatInfoProvider";
+import { chatInfoContext } from "../../ContextAPI/ChatInfoProvider";
 
 type MessagePropsType = MessagesDataType & {
    lastMessageRef: React.MutableRefObject<any>
@@ -11,7 +11,6 @@ type MessagePropsType = MessagesDataType & {
 const Message = ({ content, receiverId, senderId, _id: messageId, lastMessageRef, createdAt }: MessagePropsType) => {
    const { chatInfo: { currentUserId } } = useContext(chatInfoContext);
    const isReceiver = senderId !== currentUserId;
-   console.log('isreceiver', senderId, currentUserId);
    return (
       <Box
          sx={{

@@ -7,3 +7,7 @@ export const getUserAllChats = `${chatAPIRoute}/getUserChats`;
 export const followingUserListAPIUrl = `${followApiRoute}/getFollowingsList`;
 export const fetchChatInfo = `${chatAPIRoute}/find`;
 export const getUserBySearchAPIUrl = `${peopleApiRoute}/getUserBySearch`;
+
+//Notification API
+
+export const notificationApiRoute = "/notification";

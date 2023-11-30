@@ -9,9 +9,8 @@ import {
 } from "@mui/material";
 import React, { useContext, useEffect, useMemo } from "react";
 import { getChatInfo } from "../../apis/getChatInfo";
-import { chatInfoContext } from "./ContextAPI/ChatInfoProvider";
-import useNotificationProvider from "./CustomHooks/useNotificationProvider";
-import { NotificationType, WindowEvents } from "@kshitijraj09/sharedlib_mf";
+import { chatInfoContext } from "../../ContextAPI/ChatInfoProvider";
+import useNotificationStore from "../../zustand-config/notificationStore";
 
 const styles = () => ({
    styleCard: {
@@ -48,12 +47,10 @@ type UserCardPropsType = {
 const UserCard = ({ secondUserInfo, isLoading, chatId = '', chatName = '', from }: UserCardPropsType) => {
    const classes = styles();
    const { setChatInfo } = useContext(chatInfoContext);
-   const messageNotification = 'messageNotification' as WindowEvents.messageNotification;
-   const { outputStack: notificationStack } = useNotificationProvider<NotificationType>(messageNotification);
-   
-   let memoizedNotificationCount = useMemo(() => notificationStack.filter(notification =>
+   const { notifications } = useNotificationStore();
+   let memoizedNotificationCount = useMemo(() => notifications.filter(notification =>
       notification.senderId === secondUserInfo.userId),
-      [notificationStack]
+      [notifications]
    )
 
    const chatInfoAPIHandler = async () => {
