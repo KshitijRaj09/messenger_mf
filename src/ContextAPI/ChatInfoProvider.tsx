@@ -26,7 +26,7 @@ const ChatInfoProvider: React.FC<Props> = ({ children }) => {
       secondUserId: null,
       secondUserName: null,
       currentUserId
-   })
+   });
    return (
       <chatInfoContext.Provider value={{ chatInfo, setChatInfo }}>
          {children}

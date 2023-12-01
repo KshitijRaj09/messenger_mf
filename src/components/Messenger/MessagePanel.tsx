@@ -8,7 +8,7 @@ import { Send as SendIcon } from "@mui/icons-material";
 import { sendMessageAPI } from '../../apis/sendMessage';
 import { chatInfoContext } from '../../ContextAPI/ChatInfoProvider';
 import { sendNotification } from '../../util';
-import { pushNotifiationApi } from '../../apis/pushNotificationApi';;
+import { pushNotificationApi } from '../../apis/pushNotificationApi';;
 import useNotificationStore from '../../zustand-config/notificationStore';
 
 const StyledLoadingButton = styled(LoadingButton)(() => ({
@@ -30,12 +30,13 @@ export type MessagesDataType = {
 const MessagePanel = () => {
    const socket = window.socket;
    const { chatInfo, setChatInfo } = useContext(chatInfoContext);
-   const { chatId, currentUserId: senderId, secondUserId: receiverId, secondUserName } = chatInfo;
+   const { chatId = '', currentUserId: senderId, secondUserId: receiverId, secondUserName } = chatInfo;
    const { data: messages, isLoading, isError, setData: setMessages } = useFetchData<MessagesDataType[]>(
       fetchMessagesAPI,
       chatId,
       []
    );
+   
    const { decreaseNotifications } = useNotificationStore();
    const [isSecondUserTyping, setIsSecondUserTyping] = useState(false);
    const [isInProgress, setIsInprogress] = useState(false);
@@ -47,6 +48,9 @@ const MessagePanel = () => {
    const timeoutid = useRef<ReturnType<typeof setTimeout>>();
 
    useEffect(() => {
+      if (!chatId) {
+         return;
+      }
       socket.emit('one-one-chat', chatId);
       socket.on("message-from-server", (newMessageFromServer:MessagesDataType) => {
          sendNotification(newMessageFromServer.content, { username: secondUserName, avatar: '' });
@@ -104,7 +108,9 @@ const MessagePanel = () => {
       const messageBody = { content, receiverId };
       const response = await sendMessageAPI(messageBody);
       if (response) {
-         !chatId && setChatInfo((prev) => ({ ...prev, chatId: response.chatId }));
+         if (!chatId) {
+            setChatInfo({...chatInfo, chatId: response.chatId});
+         }
          const newMessage: MessagesDataType = {
             content,
             senderId,
@@ -113,7 +119,7 @@ const MessagePanel = () => {
             _id: new Date().toJSON()
          };
          const { _id, ...rest } = newMessage;
-         const response = await pushNotifiationApi({
+         const notificationResponse = await pushNotificationApi({
             ...rest, type: 'message',
             isRead: false
          })
