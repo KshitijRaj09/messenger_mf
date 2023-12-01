@@ -1,2 +1,2 @@
 import { NotificationType } from "@kshitijraj09/sharedlib_mf";
-export declare const pushNotifiationApi: (body: NotificationType) => Promise<any>;
+export declare const pushNotificationApi: (body: NotificationType) => Promise<any>;
